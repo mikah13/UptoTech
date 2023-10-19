@@ -3,9 +3,10 @@ export type PageField = {
   link: string;
   thumbnail: string;
   date?: string;
-  tags?: string[];
+  tags?: string;
   author?: string;
   description?: string;
+  postSelector?: string;
 };
 
 export type RequestField = {
@@ -32,4 +33,11 @@ const META_BLOG = {
   tags: '.category',
 };
 
+interface BLOGS {
+  [key: string]: PageField;
+}
 
+export const BLOGS_TO_FETCH: BLOGS = {
+  google: GOOGLE_BLOG,
+  meta: META_BLOG,
+};
