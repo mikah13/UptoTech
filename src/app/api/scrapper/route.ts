@@ -1,4 +1,4 @@
-import { PageField } from '@/lib/type';
+import { Post } from '@/lib/type';
 import { DOMParser, parseHTML } from 'linkedom';
 
 export async function GET(request: Request) {
@@ -17,24 +17,25 @@ export async function GET(request: Request) {
 
   const { document } = parseHTML(html);
 
-  const posts: PageField[] = Array.from(
-    document.querySelectorAll(postSelector)
-  ).map((post) => {
-    const title =
-      post.querySelector(titleSelector)?.textContent?.trim() || 'Untited';
-    const link =
-      post.querySelector(linkSelector)?.getAttribute('href')?.trim() || '#';
-    const thumbnail =
-      post.querySelector(thumbnailSelector)?.getAttribute('src')?.trim() || '#';
+  const posts: Post[] = Array.from(document.querySelectorAll(postSelector)).map(
+    (post) => {
+      const title =
+        post.querySelector(titleSelector)?.textContent?.trim() || 'Untited';
+      const link =
+        post.querySelector(linkSelector)?.getAttribute('href')?.trim() || '#';
+      const thumbnail =
+        post.querySelector(thumbnailSelector)?.getAttribute('src')?.trim() ||
+        '#';
 
-    const date = post.querySelector(dateSelector)?.textContent?.trim() || '';
+      const date = post.querySelector(dateSelector)?.textContent?.trim() || '';
 
-    const tags = Array.from(post.querySelectorAll(tagsSelector))
-      .map((e) => e.textContent?.trim() || '')
-      .filter((e) => e !== '');
+      const tags = Array.from(post.querySelectorAll(tagsSelector))
+        .map((e) => e.textContent?.trim() || '')
+        .filter((e) => e !== '');
 
-    return { title, link, thumbnail, date, tags };
-  });
+      return { title, link, thumbnail, date, tags };
+    }
+  );
 
   return Response.json({ posts });
 }

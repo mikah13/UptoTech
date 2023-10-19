@@ -9,8 +9,8 @@ export function cn(...inputs: ClassValue[]) {
 export function getURLFromPageField(metadata: PageField) {
   const url = new URL('/api/scrapper');
 
-  // Add parameters as query parameters
   // url.searchParams.set('title', title);
   // url.searchParams.set('pageURL', pageURL);
+  // const {title, pageURL}
   return url.toString();
 }
