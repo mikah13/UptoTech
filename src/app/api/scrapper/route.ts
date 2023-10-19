@@ -11,23 +11,14 @@ export async function GET(request: Request) {
   const thumbnailSelector = searchParams.get('thumbnail') || 'img';
   const dateSelector = searchParams.get('date') || '.entry-date.published';
   const tagsSelector = searchParams.get('tags') || '.category';
-
+  const postSelector = searchParams.get('postSelector') || 'article.post';
   const res = await fetch(siteURL, {});
   const html = await res.text();
 
-  const {
-    // note, these are *not* globals
-    window,
-    document,
-    customElements,
-    HTMLElement,
-    Event,
-    CustomEvent,
-    // other exports ..
-  } = parseHTML(html);
+  const { document } = parseHTML(html);
 
   const posts: PageField[] = Array.from(
-    document.querySelectorAll('article.post')
+    document.querySelectorAll(postSelector)
   ).map((post) => {
     const title =
       post.querySelector(titleSelector)?.textContent?.trim() || 'Untited';
