@@ -6,7 +6,11 @@ export async function GET(request: Request) {
   const DEFAULT_SITE_URL = 'https://engineering.fb.com/';
 
   const siteURL = searchParams.get('siteURL') || DEFAULT_SITE_URL;
-  const metadata = searchParams.get('metadata');
+  const titleSelector = searchParams.get('title') || '.entry-title a';
+  const linkSelector = searchParams.get('link') || '.entry-title a';
+  const thumbnailSelector = searchParams.get('thumbnail') || 'img';
+  const dateSelector = searchParams.get('date') || '.entry-date.published';
+  const tagsSelector = searchParams.get('tags') || '.category';
 
   const res = await fetch(siteURL, {});
   const html = await res.text();
@@ -22,29 +26,24 @@ export async function GET(request: Request) {
     // other exports ..
   } = parseHTML(html);
 
-  const posts = Array.from(document.querySelectorAll('article.post')).map(
-    (post) => {
-      console.log(post);
-      const title =
-        post.querySelector('.entry-title a')?.textContent?.trim() || 'Untited';
-      const link =
-        post.querySelector('.entry-title a')?.getAttribute('href')?.trim() ||
-        '#';
-      const thumbnail =
-        post.querySelector('img')?.getAttribute('src')?.trim() || '#';
+  const posts: PageField[] = Array.from(
+    document.querySelectorAll('article.post')
+  ).map((post) => {
+    const title =
+      post.querySelector(titleSelector)?.textContent?.trim() || 'Untited';
+    const link =
+      post.querySelector(linkSelector)?.getAttribute('href')?.trim() || '#';
+    const thumbnail =
+      post.querySelector(thumbnailSelector)?.getAttribute('src')?.trim() || '#';
 
-      const date =
-        post.querySelector('.entry-date.published')?.textContent?.trim() || '';
+    const date = post.querySelector(dateSelector)?.textContent?.trim() || '';
 
-      const tags = Array.from(post.querySelectorAll('.category'))
-        .map((e) => e.textContent?.trim() || '')
-        .filter((e) => e !== '');
+    const tags = Array.from(post.querySelectorAll(tagsSelector))
+      .map((e) => e.textContent?.trim() || '')
+      .filter((e) => e !== '');
 
-      // const description = post.querySelector('')
-
-      return { title, link, thumbnail, date, tags };
-    }
-  );
+    return { title, link, thumbnail, date, tags };
+  });
 
   return Response.json({ posts });
 }
