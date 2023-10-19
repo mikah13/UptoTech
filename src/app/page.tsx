@@ -1,10 +1,22 @@
+'use client';
 import { BLOGS_TO_FETCH } from '@/lib/type';
-import { useEffect } from 'react';
+import { fetchUrl, getURLFromPageField } from '@/lib/utils';
+import { useEffect, useState } from 'react';
 
 export default function Home() {
+  const [data, setData] = useState(null);
+
   useEffect(() => {
-    Object.keys(BLOGS_TO_FETCH).map((platform: string) => {
-    });
+    try {
+      const promises = Object.keys(BLOGS_TO_FETCH).map((platform: string) =>
+        fetchUrl(getURLFromPageField(BLOGS_TO_FETCH[platform]))
+      );
+      Promise.all(promises).then((data) => {
+        console.log(data);
+      });
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
   }, []);
 
   return (

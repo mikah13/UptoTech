@@ -6,8 +6,9 @@ export type PageField = {
   tags?: string;
   author?: string;
   description?: string;
-  postSelector?: string;
+  postSelector: string;
   url: string;
+  platform: string;
 };
 
 export type Post = {
@@ -21,6 +22,11 @@ export type Post = {
   postSelector?: string;
 };
 
+export type PostResponse = {
+  platform: string;
+  posts: Post[];
+};
+
 export type RequestField = {
   name: string;
   label: string;
@@ -28,6 +34,7 @@ export type RequestField = {
 };
 
 const GOOGLE_BLOG = {
+  platform: 'google',
   url: 'https://developers.googleblog.com',
   postSelector: '.dgc-card',
   title: '.dgc-card__title',
@@ -38,6 +45,7 @@ const GOOGLE_BLOG = {
 };
 
 const META_BLOG = {
+  platform: 'meta',
   url: 'https://engineering.fb.com/',
   postSelector: 'article.post',
   title: '.entry-title a',

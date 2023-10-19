@@ -7,10 +7,25 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function getURLFromPageField(metadata: PageField) {
-  const url = new URL('/api/scrapper');
+  const endpoint = new URL('http://localhost:3000/api/scrapper');
 
-  // url.searchParams.set('title', title);
-  // url.searchParams.set('pageURL', pageURL);
-  // const {title, pageURL}
-  return url.toString();
+  const { url, title, link, thumbnail, date, tags, platform, postSelector } =
+    metadata;
+  endpoint.searchParams.set('url', url);
+  endpoint.searchParams.set('title', title);
+  endpoint.searchParams.set('link', link);
+  endpoint.searchParams.set('thumbnail', thumbnail);
+  endpoint.searchParams.set('postSelector', postSelector);
+  endpoint.searchParams.set('platform', platform);
+  date && endpoint.searchParams.set('date', date);
+  tags && endpoint.searchParams.set('tags', tags);
+  return endpoint.toString();
 }
+
+export const fetchUrl = async (url: string) => {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`Request failed for ${url}`);
+  }
+  return response.json();
+};

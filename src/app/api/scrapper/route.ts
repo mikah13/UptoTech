@@ -5,13 +5,14 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const DEFAULT_SITE_URL = 'https://engineering.fb.com/';
 
-  const siteURL = searchParams.get('siteURL') || DEFAULT_SITE_URL;
+  const siteURL = searchParams.get('url') || DEFAULT_SITE_URL;
   const titleSelector = searchParams.get('title') || '.entry-title a';
   const linkSelector = searchParams.get('link') || '.entry-title a';
   const thumbnailSelector = searchParams.get('thumbnail') || 'img';
   const dateSelector = searchParams.get('date') || '.entry-date.published';
   const tagsSelector = searchParams.get('tags') || '.category';
   const postSelector = searchParams.get('postSelector') || 'article.post';
+  const platform = searchParams.get('platform') || 'meta';
   const res = await fetch(siteURL, {});
   const html = await res.text();
 
@@ -37,5 +38,5 @@ export async function GET(request: Request) {
     }
   );
 
-  return Response.json({ posts });
+  return Response.json({ platform, posts });
 }
