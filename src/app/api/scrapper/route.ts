@@ -1,3 +1,4 @@
+import { PageField } from '@/lib/type';
 import { DOMParser, parseHTML } from 'linkedom';
 
 export async function GET(request: Request) {
@@ -21,7 +22,29 @@ export async function GET(request: Request) {
     // other exports ..
   } = parseHTML(html);
 
-  console.log(document.querySelectorAll('.entry-title a').length);
+  const posts = Array.from(document.querySelectorAll('article.post')).map(
+    (post) => {
+      console.log(post);
+      const title =
+        post.querySelector('.entry-title a')?.textContent?.trim() || 'Untited';
+      const link =
+        post.querySelector('.entry-title a')?.getAttribute('href')?.trim() ||
+        '#';
+      const thumbnail =
+        post.querySelector('img')?.getAttribute('src')?.trim() || '#';
 
-  return Response.json({ html });
+      const date =
+        post.querySelector('.entry-date.published')?.textContent?.trim() || '';
+
+      const tags = Array.from(post.querySelectorAll('.category'))
+        .map((e) => e.textContent?.trim() || '')
+        .filter((e) => e !== '');
+
+      // const description = post.querySelector('')
+
+      return { title, link, thumbnail, date, tags };
+    }
+  );
+
+  return Response.json({ posts });
 }

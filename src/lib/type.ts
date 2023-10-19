@@ -5,8 +5,9 @@ export type PageField = {
     link: string
     thumbnail: string
     date?: string
-    tag?: string[]
+    tags?: string[]
     author?: string
+    description: string
 }
 
 
