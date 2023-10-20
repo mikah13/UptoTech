@@ -12,6 +12,8 @@ import {
 } from '@/components/ui/card';
 import { platform } from 'os';
 import Icon from './icons';
+import { AspectRatio } from './ui/aspect-ratio';
+import Image from 'next/image';
 
 type Props = {};
 
@@ -42,15 +44,18 @@ const PostCards = (props: Props) => {
                   key={title}
                   className=' col-span-1 drop-shadow-lg cursor-pointer hover:drop-shadow-2xl transition-150'
                 >
-                  <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
-                    
-                    <CardTitle className='text-sm font-medium'>
+                  <CardHeader className='flex flex-col items-center justify-between space-y-0 p-0'>
+                    <AspectRatio ratio={16 / 9}>
+                      <Image src={thumbnail} alt={title} fill />
+                    </AspectRatio>
+                    <CardTitle className='text-md font-medium'>
                       <Icon icon={post.platform} />
                     </CardTitle>
                     <span className='text-sm'> {date}</span>
                   </CardHeader>
                   <CardContent>
-                    <p>{title}</p>
+                    {' '}
+                    <h2>{title}</h2>
                   </CardContent>
                   <CardFooter>
                     <p>{tags?.map((e) => e)}</p>
