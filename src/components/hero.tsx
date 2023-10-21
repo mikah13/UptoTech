@@ -55,7 +55,7 @@ function Hero({}: Props) {
               width={350}
               height={80}
               alt='FAANG logos'
-              className='mx-auto'
+              className='mx-auto dark:bg-white rounded-md'
             />
           </div>
         </div>

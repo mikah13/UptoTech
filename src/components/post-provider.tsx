@@ -11,6 +11,7 @@ import {
 interface Context {
   posts: PostResponse[] | [];
   setPosts: (p: PostResponse[]) => void;
+  isLoading: boolean;
 }
 
 export const PostContext = createContext<Context | undefined>(undefined);
@@ -23,6 +24,7 @@ export const PostContextProvider: React.FC<PostProviderProps> = ({
   children,
 }) => {
   const [posts, setPosts] = useState<PostResponse[]>([]);
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     try {
@@ -31,13 +33,14 @@ export const PostContextProvider: React.FC<PostProviderProps> = ({
       );
       Promise.all(promises).then((data: PostResponse[]) => {
         setPosts(data);
+        setLoading(false);
       });
     } catch (error) {
       console.error('Error fetching data:', error);
     }
   }, []);
   return (
-    <PostContext.Provider value={{ posts, setPosts }}>
+    <PostContext.Provider value={{ posts, setPosts, isLoading }}>
       {children}
     </PostContext.Provider>
   );

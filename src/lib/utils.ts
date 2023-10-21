@@ -29,3 +29,13 @@ export const fetchUrl = async (url: string) => {
   }
   return response.json();
 };
+
+export function capitalizeFirstChar(inputString: string) {
+  if (inputString.length === 0) {
+    return inputString; // Return an empty string if the input is empty
+  }
+
+  const firstChar = inputString.charAt(0).toUpperCase(); // Capitalize the first character
+  const restOfString = inputString.slice(1); // Get the rest of the string
+  return firstChar + restOfString; // Combine the capitalized first character with the rest
+}
