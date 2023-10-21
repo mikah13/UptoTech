@@ -15,6 +15,8 @@ import Icon from './icons';
 import { AspectRatio } from './ui/aspect-ratio';
 import Image from 'next/image';
 import { Badge } from './ui/badge';
+import { Separator } from '@/components/ui/separator';
+import { Button } from './ui/button';
 
 type Props = {};
 
@@ -64,8 +66,12 @@ const PostCards = (props: Props) => {
                     </div>
                   </CardHeader>
                   <CardContent className='flex flex-col p-4'>
-                    <div className='absolute bottom-4'>
-                      <p>{tags?.map((e) => e)}</p>
+                    <div className='absolute bottom-4 flex flex-row'>
+                      {tags?.map((tag, i) => (
+                        <Button key={i} variant='outline'>
+                          {tag}
+                        </Button>
+                      ))}
                     </div>
                   </CardContent>
                 </Card>
