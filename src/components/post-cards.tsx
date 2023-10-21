@@ -66,8 +66,11 @@ const PostContent = ({ post }: { post: PostResponse }) => {
 const PostCards = (props: Props) => {
   const { posts } = usePosts();
   return (
-    <div>
-      <Tabs defaultValue='all' className='w-full'>
+    <div className='w-full mx-auto'>
+      <h2 className='scroll-m-20 mx-auto text-center border-b pb-2 text-4xl font-semibold tracking-tight first:mt-0'>
+        Featured posts
+      </h2>
+      <Tabs defaultValue='all' className='w-full mt-6 text-center'>
         <TabsList>
           <TabsTrigger value='all'>All</TabsTrigger>
           {Object.keys(BLOGS_TO_FETCH).map((platform) => (
