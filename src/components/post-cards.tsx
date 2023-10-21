@@ -60,15 +60,15 @@ const PostCards = (props: Props) => {
                       <div className='flex justify-start w-full'>
                         <Badge variant='outline'>{post.platform}</Badge>
                       </div>
-                      <article className='prose mt-2 '>
+                      <article className='prose mt-4 '>
                         <h3>{title}</h3>
                       </article>
                     </div>
                   </CardHeader>
-                  <CardContent className='flex flex-col p-4'>
-                    <div className='absolute bottom-4 flex flex-row'>
+                  <CardContent className='flex flex-col p-4 pt-12'>
+                    <div className='absolute bottom-4 flex flex-row space-x-3'>
                       {tags?.map((tag, i) => (
-                        <Button key={i} variant='outline'>
+                        <Button className='px-2 py-0' key={i} variant='outline'>
                           {tag}
                         </Button>
                       ))}
