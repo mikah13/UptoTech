@@ -3,6 +3,9 @@ import { HeroBanner } from './hero-banner';
 import { Button } from './ui/button';
 import Image from 'next/image';
 import { AspectRatio } from './ui/aspect-ratio';
+import { RadioGroup, RadioGroupItem } from './ui/radio-group';
+import { Label } from './ui/label';
+import { BLOGS_TO_FETCH } from '@/lib/type';
 
 type Props = {};
 
@@ -28,54 +31,10 @@ function Hero({}: Props) {
 
       <div className='w-1/2'>
         <HeroBanner className='w-full max-w-[25rem] mx-auto' />
-        <RadioGroup defaultValue='card' className='grid grid-cols-3 gap-4'>
-          <div>
-            <RadioGroupItem value='card' id='card' className='peer sr-only' />
-            <Label
-              htmlFor='card'
-              className='flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary'
-            >
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                viewBox='0 0 24 24'
-                fill='none'
-                stroke='currentColor'
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                strokeWidth='2'
-                className='mb-3 h-6 w-6'
-              >
-                <rect width='20' height='14' x='2' y='5' rx='2' />
-                <path d='M2 10h20' />
-              </svg>
-              Card
-            </Label>
-          </div>
-          <div>
-            <RadioGroupItem
-              value='paypal'
-              id='paypal'
-              className='peer sr-only'
-            />
-            <Label
-              htmlFor='paypal'
-              className='flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary'
-            >
-              <Icons.paypal className='mb-3 h-6 w-6' />
-              Paypal
-            </Label>
-          </div>
-          <div>
-            <RadioGroupItem value='apple' id='apple' className='peer sr-only' />
-            <Label
-              htmlFor='apple'
-              className='flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary'
-            >
-              <Icons.apple className='mb-3 h-6 w-6' />
-              Apple
-            </Label>
-          </div>
-        </RadioGroup>
+        <Image
+          src='https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/AAAMM_Big_Tech.svg/1596px-AAAMM_Big_Tech.svg.png?20220423182730'
+          fill
+        />
       </div>
     </div>
   );
