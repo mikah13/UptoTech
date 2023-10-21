@@ -72,5 +72,5 @@ interface BLOGS {
 export const BLOGS_TO_FETCH: BLOGS = {
   google: GOOGLE_BLOG,
   meta: META_BLOG,
-  ibm: IBM_BLOG,
+  // ibm: IBM_BLOG,
 };

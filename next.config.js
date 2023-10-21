@@ -8,6 +8,9 @@ const nextConfig = {
             },
             {
                 hostname: 'engineering.fb.com'
+            },
+            {
+                hostname: 'images.unsplash.com'
             }
         ],
     },
