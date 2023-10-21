@@ -6,7 +6,7 @@ import { AspectRatio } from './ui/aspect-ratio';
 import { RadioGroup, RadioGroupItem } from './ui/radio-group';
 import { Label } from './ui/label';
 import { BLOGS_TO_FETCH } from '@/lib/type';
-import { ArrowRightIcon } from 'lucide-react';
+import { ArrowRightIcon, Lightbulb, SendHorizonalIcon } from 'lucide-react';
 import { Separator } from './ui/separator';
 import Link from 'next/link';
 type Props = {};
@@ -42,7 +42,9 @@ function Hero({}: Props) {
             </h2>
             <div className='flex flex-row mt-16 space-x-4'>
               <Button className=''>Explore all</Button>
-              <Button variant='outline'>Request company</Button>
+              <Button variant='outline'>
+                Request company <Lightbulb className='ml-2' />
+              </Button>
             </div>
           </div>
         </section>

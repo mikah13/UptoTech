@@ -19,6 +19,7 @@ import { Separator } from '@/components/ui/separator';
 import { Button } from './ui/button';
 import { capitalizeFirstChar } from '@/lib/utils';
 import ContentCard from './content-card';
+import SkeletonCard from './skeleton-card';
 
 type Props = {};
 
@@ -52,9 +53,15 @@ const PostCards = (props: Props) => {
           ))}
         </TabsList>
 
-        {posts.map((post, index) => (
-          <PostContent key={index} post={post} />
-        ))}
+        {isLoading && (
+          <div className='grid grid-cols-3 gap-x-4 gap-y-8 text-left mt-2'>
+            {new Array(12).fill('').map((e) => (
+              <SkeletonCard key={e} />
+            ))}
+          </div>
+        )}
+        {!isLoading &&
+          posts.map((post, index) => <PostContent key={index} post={post} />)}
       </Tabs>
     </div>
   );
