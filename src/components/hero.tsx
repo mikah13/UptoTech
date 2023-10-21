@@ -13,8 +13,8 @@ type Props = {};
 
 function Hero({}: Props) {
   return (
-    <div className='h-screen'>
-      <div className='flex flex-row justify-evenly w-full '>
+    <div className='h-screen '>
+      <div className='flex flex-row justify-evenly w-full pt-28'>
         <section className='flex flex-col space-y-4 w-1/2 mt-14'>
           <div>
             <Link
