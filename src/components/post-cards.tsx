@@ -54,18 +54,20 @@ const PostCards = (props: Props) => {
                     {/* <Icon icon={post.platform} /> */}
                     {/* </CardTitle> */}
                     {/* <span className='text-sm'> {date}</span> */}
-                  </CardHeader>
-                  <CardContent className='flex flex-col pt-4'>
-                    <div className='flex justify-start w-full'>
-                      <Badge variant='outline'>{post.platform}</Badge>
+                    <div className='p-4 w-full'>
+                      <div className='flex justify-start w-full'>
+                        <Badge variant='outline'>{post.platform}</Badge>
+                      </div>
+                      <article className='prose mt-2 '>
+                        <h3>{title}</h3>
+                      </article>
                     </div>
-                    <article className='prose mt-2'>
-                      <h2>{title}</h2>
-                    </article>
+                  </CardHeader>
+                  <CardContent className='flex flex-col p-4'>
+                    <div className='absolute bottom-4'>
+                      <p>{tags?.map((e) => e)}</p>
+                    </div>
                   </CardContent>
-                  <CardFooter>
-                    <p>{tags?.map((e) => e)}</p>
-                  </CardFooter>
                 </Card>
               );
             })}
