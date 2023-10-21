@@ -14,6 +14,7 @@ import { platform } from 'os';
 import Icon from './icons';
 import { AspectRatio } from './ui/aspect-ratio';
 import Image from 'next/image';
+import { Badge } from './ui/badge';
 
 type Props = {};
 
@@ -42,20 +43,25 @@ const PostCards = (props: Props) => {
               return (
                 <Card
                   key={title}
-                  className=' col-span-1 drop-shadow-lg cursor-pointer hover:drop-shadow-2xl transition-150'
+                  className='col-span-1 drop-shadow-lg cursor-pointer hover:drop-shadow-2xl transition-150'
                 >
                   <CardHeader className='flex flex-col items-center justify-between space-y-0 p-0'>
                     <AspectRatio ratio={16 / 9}>
                       <Image src={thumbnail} alt={title} fill />
                     </AspectRatio>
-                    <CardTitle className='text-md font-medium'>
-                      <Icon icon={post.platform} />
-                    </CardTitle>
-                    <span className='text-sm'> {date}</span>
+
+                    {/* <CardTitle className='text-md font-medium'> */}
+                    {/* <Icon icon={post.platform} /> */}
+                    {/* </CardTitle> */}
+                    {/* <span className='text-sm'> {date}</span> */}
                   </CardHeader>
-                  <CardContent>
-                    {' '}
-                    <h2>{title}</h2>
+                  <CardContent className='flex flex-col pt-4'>
+                    <div className='flex justify-start w-full'>
+                      <Badge variant='outline'>{post.platform}</Badge>
+                    </div>
+                    <article className='prose mt-2'>
+                      <h2>{title}</h2>
+                    </article>
                   </CardContent>
                   <CardFooter>
                     <p>{tags?.map((e) => e)}</p>
