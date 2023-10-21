@@ -22,7 +22,7 @@ const ContentCard = ({ data, platform }: { data: Post; platform: string }) => {
   return (
     <Card
       key={title}
-      className='col-span-1 group drop-shadow-lg  cursor-pointer shadow-lg shadow-zinc-500/50 hover:drop-shadow-2xl dark:hover:drop-shadow-2xl hover:border-purple-500 dark:hover:border-blue-400 border-2 transition-150'
+      className='col-span-1 group drop-shadow-lg  cursor-pointer shadow-lg shadow-zinc-500/50 hover:drop-shadow-2xl dark:hover:drop-shadow-2xl hover:border-blue-500 dark:hover:border-blue-400 border-2 transition-150'
     >
       <CardHeader className='flex flex-col items-center justify-between space-y-0 p-0'>
         <AspectRatio ratio={16 / 9}>
