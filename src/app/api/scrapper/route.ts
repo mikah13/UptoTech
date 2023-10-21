@@ -26,7 +26,7 @@ export async function GET(request: Request) {
         post.querySelector(linkSelector)?.getAttribute('href')?.trim() || '#';
       const thumbnail =
         post.querySelector(thumbnailSelector)?.getAttribute('src')?.trim() ||
-        '#';
+        '';
 
       const date = post.querySelector(dateSelector)?.textContent?.trim() || '';
 

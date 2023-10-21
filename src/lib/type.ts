@@ -54,6 +54,16 @@ const META_BLOG = {
   thumbnail: 'img',
   tags: '.category',
 };
+const IBM_BLOG = {
+  platform: 'ibm',
+  url: 'https://www.ibm.com/blog/',
+  postSelector: '.article',
+  title: '.article__title',
+  link: '.article__content_link',
+  date: '.article__date',
+  thumbnail: 'img',
+  tags: '.article__category_link',
+};
 
 interface BLOGS {
   [key: string]: PageField;
@@ -62,6 +72,5 @@ interface BLOGS {
 export const BLOGS_TO_FETCH: BLOGS = {
   google: GOOGLE_BLOG,
   meta: META_BLOG,
+  ibm: IBM_BLOG,
 };
-
-
