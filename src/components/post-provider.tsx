@@ -33,10 +33,8 @@ export const PostContextProvider: React.FC<PostProviderProps> = ({
         let fetchData = await fetchUrl(
           getURLFromPageField(BLOGS_TO_FETCH[platform])
         );
-        console.log(fetchData);
         data.push(fetchData);
       });
-      console.log(data);
     } catch (error) {
       console.error('Error fetching data:', error);
     }

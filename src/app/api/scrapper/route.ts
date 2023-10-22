@@ -1,5 +1,5 @@
 import { DATE_CONVERSION_FUNCTION, Post } from '@/lib/type';
-import { DOMParser, parseHTML } from 'linkedom';
+// import { DOMParser, parseHTML } from 'linkedom';
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -17,8 +17,8 @@ export async function GET(request: Request) {
   const platform = searchParams.get('platform') || 'meta';
   const res = await fetch(siteURL, {});
   const html = await res.text();
-
-  const { document } = parseHTML(html);
+  const parser = new DOMParser();
+  const document = parser.parseFromString(html, 'text/html');
 
   const posts: Post[] = Array.from(document.querySelectorAll(postSelector)).map(
     (post) => {
@@ -39,7 +39,9 @@ export async function GET(request: Request) {
           ](date);
       }
       const tags = Array.from(post.querySelectorAll(tagsSelector))
-        .map((e) => e.textContent?.trim() || '')
+        .map((e: any) => {
+          return e.innerText?.trim() || '';
+        })
         .filter((e) => e !== '');
 
       return { title, link, thumbnail, date, tags };
