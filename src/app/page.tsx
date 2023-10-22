@@ -23,7 +23,7 @@ export default function Home() {
             <CardHeader className='px-0 py-0'>
               <Header />
             </CardHeader>
-            <CardContent className='px-12'>
+            <CardContent className='px-12 pb-12'>
               <Hero />
               <PostCards />
             </CardContent>
