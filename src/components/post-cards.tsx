@@ -11,7 +11,7 @@ type Props = {};
 const PostContent = ({ post }: { post: PostResponse }) => {
   return (
     <TabsContent
-      className='grid grid-cols-3 gap-x-4 gap-y-8 text-left'
+      className='grid grid-cols-3 gap-x-4 gap-y-8 text-left mt-0'
       key={post.platform}
       value={post.platform}
     >
@@ -31,10 +31,10 @@ const PostCards = (props: Props) => {
         Featured posts
       </h2>
       <Tabs defaultValue='Google' className='w-full mt-6 text-center'>
-        <TabsList>
+        <TabsList className='mb-8 px-2 py-6'>
           {Object.keys(BLOGS_TO_FETCH).map((platform) => (
             <TabsTrigger key={platform} value={platform}>
-              {platform}
+              <p> {platform}</p>
             </TabsTrigger>
           ))}
         </TabsList>

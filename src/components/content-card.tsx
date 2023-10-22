@@ -34,8 +34,8 @@ const ContentCard = ({ data, platform }: { data: Post; platform: string }) => {
             className='rounded-md rounded-b-none'
           />
         </AspectRatio>
-        <Link href={link}>
-          <div className='p-4 w-full'>
+        <Link href={link} className='p-4 w-full'>
+          <div className=''>
             <div className='flex justify-start w-full'>
               <Badge variant='outline'>{platform}</Badge>
             </div>
