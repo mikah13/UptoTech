@@ -11,7 +11,7 @@ type Props = {};
 const PostContent = ({ post }: { post: PostResponse }) => {
   return (
     <TabsContent
-      className='grid grid-cols-3 gap-x-4 gap-y-8 text-left mt-0'
+      className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-4 gap-y-8 text-left mt-0'
       key={post.platform}
       value={post.platform}
     >

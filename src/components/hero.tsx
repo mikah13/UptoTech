@@ -14,17 +14,15 @@ type Props = {};
 function Hero({}: Props) {
   return (
     <div className='h-screen '>
-      <div className='flex flex-row justify-evenly w-full pt-28'>
-        <section className='flex flex-col space-y-4 w-1/2 mt-14'>
+      <div className='flex flex-col lg:flex-row space-y-6 lg:space-y-0 justify-evenly w-full pt-28'>
+        <section className='flex flex-col space-y-4 w-full lg:w-1/2 mt-14'>
           <div>
             <Link
               href='#'
               className='inline-flex items-center rounded-lg bg-muted px-3 py-1 text-sm font-medium'
             >
               🚀 <Separator className='mx-2 h-4' orientation='vertical' />{' '}
-              <span className='sm:hidden'>
-                Introduce blogs from big tech companies.
-              </span>
+              <span className='sm:hidden'>Latest posts from big tech.</span>
               <span className='hidden sm:inline'>
                 Introduce blogs from big tech companies.
               </span>
@@ -43,15 +41,20 @@ function Hero({}: Props) {
             <div className='flex flex-row mt-16 space-x-4'>
               <Button className=''>Explore all</Button>
               <Button variant='outline'>
-                Request company <Lightbulb className='ml-2' />
+                <Link
+                  className='flex flex-row '
+                  href='https://github.com/mikah13/UptoTech/pulls'
+                >
+                  Request company <Lightbulb className='ml-2' />
+                </Link>
               </Button>
             </div>
           </div>
         </section>
 
-        <div className='flex flex-col space-y-12 w-1/2 relative'>
+        <div className='flex flex-col space-y-12 w-full lg:w-1/2 relative order-first lg:order-last'>
           <HeroBanner className='w-full max-w-[25rem] mx-auto' />
-          <div className='w-full max-w-[25rem] mx-auto'>
+          <div className='w-full max-w-[25rem] mx-auto hidden lg:flex'>
             <Image
               src='https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/AAAMM_Big_Tech.svg/1596px-AAAMM_Big_Tech.svg.png?20220423182730'
               width={350}

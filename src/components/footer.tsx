@@ -12,7 +12,7 @@ type Props = {};
 
 const Footer = (props: Props) => {
   return (
-    <div className='px-12 py-4 flex flex-row justify-between border-t w-full'>
+    <div className='px-6 lg:px-12 py-4 flex flex-col space-y-6 lg:space-y-0 lg:flex-row justify-between border-t w-full'>
       <div className='flex items-center font-semibold'>
         <Link href='/'>{'</>'} UptoTech</Link>
       </div>
