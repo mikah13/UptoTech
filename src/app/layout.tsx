@@ -47,7 +47,7 @@ export const metadata: Metadata = {
       'Compile from various technical blogs into one central hub, saving you time and ensuring you updated with the industry leading companies in the world !',
     images: [
       {
-        url: 'https://uptotech.vercel.app/avicon.ico',
+        url: 'https://uptotech.vercel.app/favicon.ico',
         width: 128,
         height: 128,
         alt: 'UptoTech',
