@@ -34,7 +34,7 @@ export type RequestField = {
 };
 
 const GOOGLE_BLOG = {
-  platform: 'google',
+  platform: 'Google',
   url: 'https://developers.googleblog.com',
   postSelector: '.dgc-card',
   title: '.dgc-card__title',
@@ -45,7 +45,7 @@ const GOOGLE_BLOG = {
 };
 
 const META_BLOG = {
-  platform: 'meta',
+  platform: 'Meta',
   url: 'https://engineering.fb.com/',
   postSelector: 'article.post',
   title: '.entry-title a',
@@ -55,13 +55,13 @@ const META_BLOG = {
   tags: '.category',
 };
 const IBM_BLOG = {
-  platform: 'ibm',
+  platform: 'IBM',
   url: 'https://www.ibm.com/blog/',
   postSelector: '.article',
   title: '.article__title',
   link: '.article__content_link',
   date: '.article__date',
-  thumbnail: 'img',
+  thumbnail: 'amp-img',
   tags: '.article__category_link',
 };
 
@@ -70,7 +70,7 @@ interface BLOGS {
 }
 
 export const BLOGS_TO_FETCH: BLOGS = {
-  google: GOOGLE_BLOG,
-  meta: META_BLOG,
-  // ibm: IBM_BLOG,
+  Google: GOOGLE_BLOG,
+  Meta: META_BLOG,
+  IBM: IBM_BLOG,
 };

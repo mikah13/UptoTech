@@ -10,11 +10,13 @@ import {
 
 interface Context {
   posts: PostResponse[] | [];
-  setPosts: (p: PostResponse[]) => void;
   isLoading: boolean;
 }
 
-export const PostContext = createContext<Context | undefined>(undefined);
+export const PostContext = createContext<Context>({
+  posts: [],
+  isLoading: true,
+});
 
 type PostProviderProps = {
   children: ReactNode;
@@ -27,6 +29,7 @@ export const PostContextProvider: React.FC<PostProviderProps> = ({
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
+    console.log('call post context from provicer', isLoading);
     try {
       const promises = Object.keys(BLOGS_TO_FETCH).map((platform: string) =>
         fetchUrl(getURLFromPageField(BLOGS_TO_FETCH[platform]))
@@ -40,7 +43,7 @@ export const PostContextProvider: React.FC<PostProviderProps> = ({
     }
   }, []);
   return (
-    <PostContext.Provider value={{ posts, setPosts, isLoading }}>
+    <PostContext.Provider value={{ posts, isLoading }}>
       {children}
     </PostContext.Provider>
   );

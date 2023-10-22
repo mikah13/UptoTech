@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    experimental: {
+        swcPlugins: [['@swc-jotai/react-refresh', {}]],
+    },
     images: {
         remotePatterns: [
             {
@@ -14,6 +17,9 @@ const nextConfig = {
             },
             {
                 hostname: 'upload.wikimedia.org'
+            },
+            {
+                hostname: 'www.ibm.com'
             }
         ],
     },

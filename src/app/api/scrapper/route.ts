@@ -24,6 +24,8 @@ export async function GET(request: Request) {
         post.querySelector(titleSelector)?.textContent?.trim() || 'Untited';
       const link =
         post.querySelector(linkSelector)?.getAttribute('href')?.trim() || '#';
+      console.log(post);
+
       const thumbnail =
         post.querySelector(thumbnailSelector)?.getAttribute('src')?.trim() ||
         '';

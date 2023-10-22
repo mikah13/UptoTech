@@ -44,19 +44,19 @@ const PostCards = (props: Props) => {
       <h2 className='scroll-m-20 mx-auto text-center border-b pb-6 text-4xl font-semibold tracking-tight first:mt-0'>
         Featured posts
       </h2>
-      <Tabs defaultValue='google' className='w-full mt-6 text-center'>
+      <Tabs defaultValue='Google' className='w-full mt-6 text-center'>
         <TabsList>
           {Object.keys(BLOGS_TO_FETCH).map((platform) => (
             <TabsTrigger key={platform} value={platform}>
-              {capitalizeFirstChar(platform)}
+              {platform}
             </TabsTrigger>
           ))}
         </TabsList>
 
         {isLoading && (
           <div className='grid grid-cols-3 gap-x-4 gap-y-8 text-left mt-2'>
-            {new Array(12).fill('').map((e) => (
-              <SkeletonCard key={e} />
+            {new Array(12).fill('').map((e, i) => (
+              <SkeletonCard key={i} />
             ))}
           </div>
         )}
