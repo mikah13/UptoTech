@@ -4,9 +4,9 @@ import { PageField } from './type';
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
-
+const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
 export function getURLFromPageField(metadata: PageField) {
-  const endpoint = new URL('http://localhost:3000/api/scrapper');
+  const endpoint = new URL(`${BASE_URL}/api/scrapper`);
 
   const { url, title, link, thumbnail, date, tags, platform, postSelector } =
     metadata;
@@ -28,13 +28,3 @@ export const fetchUrl = async (url: string) => {
   }
   return response.json();
 };
-
-export function capitalizeFirstChar(inputString: string) {
-  if (inputString.length === 0) {
-    return inputString; // Return an empty string if the input is empty
-  }
-
-  const firstChar = inputString.charAt(0).toUpperCase(); // Capitalize the first character
-  const restOfString = inputString.slice(1); // Get the rest of the string
-  return firstChar + restOfString; // Combine the capitalized first character with the rest
-}

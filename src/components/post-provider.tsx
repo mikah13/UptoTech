@@ -28,7 +28,6 @@ export const PostContextProvider: React.FC<PostProviderProps> = ({
   const [posts, setPosts] = useState<PostResponse[]>([]);
   const [isLoading, setLoading] = useState(true);
   useEffect(() => {
-    console.log('call post context from provicer', isLoading);
     try {
       const promises = Object.keys(BLOGS_TO_FETCH).map((platform: string) =>
         fetchUrl(getURLFromPageField(BLOGS_TO_FETCH[platform]))
@@ -40,7 +39,7 @@ export const PostContextProvider: React.FC<PostProviderProps> = ({
     } catch (error) {
       console.error('Error fetching data:', error);
     }
-  }, []);
+  }, [isLoading]);
   return (
     <PostContext.Provider value={{ posts, isLoading }}>
       {children}
