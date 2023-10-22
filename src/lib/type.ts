@@ -61,7 +61,7 @@ const META_BLOG = {
 };
 const IBM_BLOG = {
   platform: 'IBM',
-  url: 'https://www.ibm.com/blog/',
+  url: 'https://www.ibm.com/blog/all-articles/',
   postSelector: '.article',
   title: '.article__title',
   link: '.article__content_link',
