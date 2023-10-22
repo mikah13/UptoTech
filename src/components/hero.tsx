@@ -2,10 +2,7 @@ import React from 'react';
 import { HeroBanner } from './hero-banner';
 import { Button } from './ui/button';
 import Image from 'next/image';
-import { AspectRatio } from './ui/aspect-ratio';
-import { RadioGroup, RadioGroupItem } from './ui/radio-group';
-import { Label } from './ui/label';
-import { BLOGS_TO_FETCH } from '@/lib/type';
+
 import { ArrowRightIcon, Lightbulb, SendHorizonalIcon } from 'lucide-react';
 import { Separator } from './ui/separator';
 import Link from 'next/link';
