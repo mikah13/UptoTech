@@ -18,14 +18,12 @@ export async function GET(request: Request) {
   const html = await res.text();
   const $ = cheerio.load(html);
 
-  // const parser = new DOMParser();
-  // const document = parser.parseFromString(html, 'text/html');
-
-  // const document = htmlparser2.parseDocument(htmlString);
   let posts: Post[] = [];
   let allPosts = $(postSelector);
+  console.log(allPosts.length);
   allPosts.each(function (index, e) {
-    const title = $(e).find(titleSelector)?.first()?.text().trim() || 'Untited';
+    const title =
+      $(e).find(titleSelector)?.first()?.text().trim() || 'Untitled';
     const link = $(e).find(linkSelector)?.first()?.attr('href')?.trim() || '#';
     const thumbnail =
       $(e).find(thumbnailSelector)?.first()?.attr('src')?.trim() || '';
@@ -44,32 +42,10 @@ export async function GET(request: Request) {
         tags.push(tag);
       }
     });
+    if (title === '{{{title}}}') return; // escape IBM case
     posts.push({ title, link, thumbnail, date, tags });
   });
-  // const posts: Post[] = Array.from($(postSelector)).map((post) => {
-  //   const title =
-  //     post.querySelector(titleSelector)?.textContent?.trim() || 'Untited';
-  //   const link =
-  //     post.querySelector(linkSelector)?.getAttribute('href')?.trim() || '#';
 
-  //   const thumbnail =
-  //     post.querySelector(thumbnailSelector)?.getAttribute('src')?.trim() || '';
-
-  //   let date = post.querySelector(dateSelector)?.textContent?.trim();
-  //   if (date) {
-  //     date =
-  //       DATE_CONVERSION_FUNCTION[
-  //         dateFunction as keyof typeof DATE_CONVERSION_FUNCTION
-  //       ](date);
-  //   }
-  //   const tags = Array.from(post.querySelectorAll(tagsSelector))
-  //     .map((e: any) => {
-  //       return e.innerText?.trim() || '';
-  //     })
-  //     .filter((e) => e !== '');
-
-  //   return { title, link, thumbnail, date, tags };
-  // });
-
+  
   return Response.json({ platform, posts });
 }
