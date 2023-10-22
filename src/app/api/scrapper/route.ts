@@ -1,5 +1,5 @@
 import { DATE_CONVERSION_FUNCTION, Post } from '@/lib/type';
-// import { DOMParser, parseHTML } from 'linkedom';
+import { DOMParser, parseHTML } from 'linkedom';
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
