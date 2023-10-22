@@ -4,7 +4,7 @@ import { PageField } from './type';
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
-const BASE_URL = process.env.BASE_URL || 'https://uptotech.vercel.app';
+const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
 export function getURLFromPageField(metadata: PageField) {
   const endpoint = new URL(`${BASE_URL}/api/scrapper`);
 

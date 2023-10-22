@@ -1,3 +1,5 @@
+import { convertMDDYY, convertMMMDDYYYY } from './date';
+
 export type PageField = {
   title: string;
   link: string;
@@ -9,6 +11,7 @@ export type PageField = {
   postSelector: string;
   url: string;
   platform: string;
+  dateConversion: string;
 };
 
 export type Post = {
@@ -42,6 +45,7 @@ const GOOGLE_BLOG = {
   date: '.dgc-card__info',
   thumbnail: 'img',
   tags: '.blog-label',
+  dateConversion: 'convertMDDYY',
 };
 
 const META_BLOG = {
@@ -53,6 +57,7 @@ const META_BLOG = {
   date: '.entry-date.published',
   thumbnail: 'img',
   tags: '.category',
+  dateConversion: 'convertMMMDDYYYY',
 };
 const IBM_BLOG = {
   platform: 'IBM',
@@ -63,6 +68,7 @@ const IBM_BLOG = {
   date: '.article__date',
   thumbnail: 'amp-img',
   tags: '.article__category_link',
+  dateConversion: 'convertMDDYY',
 };
 
 interface BLOGS {
@@ -73,4 +79,9 @@ export const BLOGS_TO_FETCH: BLOGS = {
   Google: GOOGLE_BLOG,
   Meta: META_BLOG,
   IBM: IBM_BLOG,
+};
+
+export const DATE_CONVERSION_FUNCTION = {
+  convertMDDYY: convertMDDYY,
+  convertMMMDDYYYY: convertMMMDDYYYY,
 };

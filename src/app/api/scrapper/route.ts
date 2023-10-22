@@ -1,4 +1,4 @@
-import { Post } from '@/lib/type';
+import { DATE_CONVERSION_FUNCTION, Post } from '@/lib/type';
 import { DOMParser, parseHTML } from 'linkedom';
 
 export async function GET(request: Request) {
@@ -12,6 +12,8 @@ export async function GET(request: Request) {
   const dateSelector = searchParams.get('date') || '.entry-date.published';
   const tagsSelector = searchParams.get('tags') || '.category';
   const postSelector = searchParams.get('postSelector') || 'article.post';
+  const dateFunction = searchParams.get('dateConversion') || 'convertMDDYY';
+
   const platform = searchParams.get('platform') || 'meta';
   const res = await fetch(siteURL, {});
   const html = await res.text();
@@ -24,14 +26,18 @@ export async function GET(request: Request) {
         post.querySelector(titleSelector)?.textContent?.trim() || 'Untited';
       const link =
         post.querySelector(linkSelector)?.getAttribute('href')?.trim() || '#';
-      console.log(post);
 
       const thumbnail =
         post.querySelector(thumbnailSelector)?.getAttribute('src')?.trim() ||
         '';
 
-      const date = post.querySelector(dateSelector)?.textContent?.trim() || '';
-
+      let date = post.querySelector(dateSelector)?.textContent?.trim();
+      if (date) {
+        date =
+          DATE_CONVERSION_FUNCTION[
+            dateFunction as keyof typeof DATE_CONVERSION_FUNCTION
+          ](date);
+      }
       const tags = Array.from(post.querySelectorAll(tagsSelector))
         .map((e) => e.textContent?.trim() || '')
         .filter((e) => e !== '');
