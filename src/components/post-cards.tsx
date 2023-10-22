@@ -2,22 +2,7 @@ import React from 'react';
 import { usePosts } from './ui/hooks';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { BLOGS_TO_FETCH, PostResponse } from '@/lib/type';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
-import { platform } from 'os';
-import Icon from './icons';
-import { AspectRatio } from './ui/aspect-ratio';
-import Image from 'next/image';
-import { Badge } from './ui/badge';
-import { Separator } from '@/components/ui/separator';
-import { Button } from './ui/button';
-import { capitalizeFirstChar } from '@/lib/utils';
+
 import ContentCard from './content-card';
 import SkeletonCard from './skeleton-card';
 
@@ -39,6 +24,7 @@ const PostContent = ({ post }: { post: PostResponse }) => {
 
 const PostCards = (props: Props) => {
   const { posts, isLoading } = usePosts();
+
   return (
     <div className='w-full mx-auto'>
       <h2 className='scroll-m-20 mx-auto text-center border-b pb-6 text-4xl font-semibold tracking-tight first:mt-0'>

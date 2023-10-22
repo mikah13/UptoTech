@@ -1,7 +1,6 @@
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { PageField } from './type';
-const dynamic = 'force-dynamic';
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
@@ -23,7 +22,7 @@ export function getURLFromPageField(metadata: PageField) {
 }
 
 export const fetchUrl = async (url: string) => {
-  const response = await fetch(url, { cache: 'no-store' });
+  const response = await fetch(url);
   if (!response.ok) {
     throw new Error(`Request failed for ${url}`);
   }

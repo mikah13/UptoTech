@@ -27,7 +27,6 @@ export const PostContextProvider: React.FC<PostProviderProps> = ({
 }) => {
   const [posts, setPosts] = useState<PostResponse[]>([]);
   const [isLoading, setLoading] = useState(true);
-
   useEffect(() => {
     console.log('call post context from provicer', isLoading);
     try {
