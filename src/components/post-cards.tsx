@@ -1,30 +1,44 @@
 import React from 'react';
-import { usePosts } from './ui/hooks';
+import useDataFetcher, { usePosts } from './hooks';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { BLOGS_TO_FETCH, PostResponse } from '@/lib/type';
 
 import ContentCard from './content-card';
 import SkeletonCard from './skeleton-card';
+import { ErrorBanner } from './error-banner';
 
 type Props = {};
 
-const PostContent = ({ post }: { post: PostResponse }) => {
+const PostContent = ({ platform }: { platform: string }) => {
+  const { data, loading, error } = useDataFetcher(platform);
   return (
     <TabsContent
       className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-4 gap-y-8 text-left mt-0'
-      key={post.platform}
-      value={post.platform}
+      key={platform}
+      value={platform}
     >
-      {post.posts.map((data, index) => (
-        <ContentCard key={index} data={data} platform={post.platform} />
-      ))}
+      {error && (
+        <div className='col-span-3 mx-auto text-center my-6'>
+          <ErrorBanner className='w-64 ' />{' '}
+          <p className='pt-6 text-lg font-bold'>Data not found</p>
+        </div>
+      )}
+      {!error && loading && (
+        <>
+          {new Array(12).fill('').map((e, i) => (
+            <SkeletonCard key={i} />
+          ))}
+        </>
+      )}
+      {data &&
+        data.posts.map((post, index) => (
+          <ContentCard key={index} data={post} platform={platform} />
+        ))}
     </TabsContent>
   );
 };
 
 const PostCards = (props: Props) => {
-  const { posts, isLoading } = usePosts();
-
   return (
     <div className='w-full mx-auto'>
       <h2 className='scroll-m-20 mx-auto text-center border-b pb-6 text-4xl font-semibold tracking-tight first:mt-0'>
@@ -39,15 +53,9 @@ const PostCards = (props: Props) => {
           ))}
         </TabsList>
 
-        {isLoading && (
-          <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3  gap-x-4 gap-y-8 text-left mt-2'>
-            {new Array(12).fill('').map((e, i) => (
-              <SkeletonCard key={i} />
-            ))}
-          </div>
-        )}
-        {!isLoading &&
-          posts.map((post, index) => <PostContent key={index} post={post} />)}
+        {Object.keys(BLOGS_TO_FETCH).map((platform, index) => (
+          <PostContent key={index} platform={platform} />
+        ))}
       </Tabs>
     </div>
   );

@@ -36,6 +36,11 @@ export type RequestField = {
   domSelector: string;
 };
 
+export interface Context {
+  posts: PostResponse[] | [];
+  isLoading: boolean;
+}
+
 const GOOGLE_BLOG = {
   platform: 'Google',
   url: 'https://developers.googleblog.com',
