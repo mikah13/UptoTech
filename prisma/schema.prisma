@@ -11,18 +11,13 @@ datasource db {
 }
 
 model Post {
-  id         Int      @id @default(autoincrement())
-  title      String
-  thumbnail  String
-  date       String
-  tags       String[]
-  link       String
-  platform   Platform @relation(fields: [platformId], references: [id])
-  platformId Int
-}
+  id        Int      @id @default(autoincrement())
+  title     String
+  thumbnail String
+  date      String
+  tags      String[]
+  link      String
+  platform  String
 
-model Platform {
-  id    Int    @id @default(autoincrement())
-  title String
-  Post  Post[]
+  @@index([title, tags, platform], name: "cluster")
 }
