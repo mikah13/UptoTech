@@ -7,7 +7,6 @@ const nextConfig = {
         remotePatterns: [
             {
                 hostname: 'blogger.googleusercontent.com',
-
             },
             {
                 hostname: 'engineering.fb.com'
@@ -20,7 +19,10 @@ const nextConfig = {
             },
             {
                 hostname: 'www.ibm.com'
-            }
+            },
+            {
+                hostname: 'cdn-images-1.medium.com'
+            },
         ],
     },
 }

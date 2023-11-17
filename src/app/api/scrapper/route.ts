@@ -20,7 +20,6 @@ export async function GET(request: Request) {
 
   let posts: Post[] = [];
   let allPosts = $(postSelector);
-  console.log(allPosts.length);
   allPosts.each(function (index, e) {
     const title =
       $(e).find(titleSelector)?.first()?.text().trim() || 'Untitled';
@@ -46,6 +45,5 @@ export async function GET(request: Request) {
     posts.push({ title, link, thumbnail, date, tags });
   });
 
-  
   return Response.json({ platform, posts });
 }

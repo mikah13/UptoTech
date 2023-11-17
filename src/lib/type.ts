@@ -76,6 +76,18 @@ const IBM_BLOG = {
   dateConversion: 'convertMDDYY',
 };
 
+const LYFT_BLOG = {
+  platform: 'Lyft',
+  url: 'https://eng.lyft.com/',
+  postSelector: '.postArticle',
+  title: '.graf--title',
+  link: '.link--darken',
+  date: 'time',
+  thumbnail: 'img:nth-child(2)',
+  tags: '',
+  dateConversion: '',
+};
+
 interface BLOGS {
   [key: string]: PageField;
 }
@@ -84,6 +96,7 @@ export const BLOGS_TO_FETCH: BLOGS = {
   Google: GOOGLE_BLOG,
   Meta: META_BLOG,
   IBM: IBM_BLOG,
+  Lyft: LYFT_BLOG,
 };
 
 export const DATE_CONVERSION_FUNCTION = {
