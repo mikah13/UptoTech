@@ -39,3 +39,7 @@ export function convertMDDYY(originalDate: string): string {
 
   return `${day}/${month}/${year}`;
 }
+
+export function convertUberDate(originalData: string): string {
+  return '';
+}
