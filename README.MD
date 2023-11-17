@@ -27,7 +27,6 @@ Go to the project directory
 
 ```bash
   cd uptotech
-  cd www
 ```
 
 Install dependencies
