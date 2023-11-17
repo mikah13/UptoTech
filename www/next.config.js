@@ -7,7 +7,6 @@ const nextConfig = {
         remotePatterns: [
             {
                 hostname: 'blogger.googleusercontent.com',
-
             },
             {
                 hostname: 'engineering.fb.com'

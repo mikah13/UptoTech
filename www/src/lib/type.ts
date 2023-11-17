@@ -83,7 +83,7 @@ const LYFT_BLOG = {
   title: '.graf--title',
   link: '.link--darken',
   date: 'time',
-  thumbnail: 'img',
+  thumbnail: 'img:nth-child(2)',
   tags: '',
   dateConversion: '',
 };
