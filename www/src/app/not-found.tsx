@@ -21,7 +21,7 @@ const Error = (props: Props) => {
         </CardHeader>
         <CardContent className='px-6 lg:px-12 pb-12 text-center'>
           <ErrorBanner className='w-full max-w-[25rem] mx-auto mt-24 mb-16' />
-          <h1 className='scroll-m-20  text-4xl font-extrabold tracking-tight lg:text-5xl '>
+          <h1 className='scroll-m-20  text-4xl font-extrabold tracking-tight lg:text-5xl'>
             Page Not Found
           </h1>
         </CardContent>

@@ -46,6 +46,5 @@ export async function GET(request: Request) {
     posts.push({ title, link, thumbnail, date, tags });
   });
 
-  
   return Response.json({ platform, posts });
 }
