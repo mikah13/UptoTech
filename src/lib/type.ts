@@ -81,7 +81,7 @@ const LYFT_BLOG = {
   url: 'https://eng.lyft.com/',
   postSelector: '.postArticle',
   title: '.graf--title',
-  link: '.link--darken',
+  link: '.postArticle-readMore a',
   date: 'time',
   thumbnail: 'img:nth-child(2)',
   tags: '',
