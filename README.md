@@ -1,21 +1,18 @@
 
 # UptoTech
 
-A web scraping tool designed to retrieve articles from the technical blogs of tech companies using Next.js
+Introducing a full-stack Next.js application designed to aggregate and display blog posts from the top tech companies in real-time. 
 
 
 ## Tech Stack
 
-**Client:** React, Next.js, TalwindCSS, Shadcn, cheerio
-
-**Server:** Node, Nest
-
+**Framework:** React, Next.js
+**Style:** TalwindCSS, Shadcn
+**Libraries:** cheerio 
 **Hosting:** Vercel
 
 
-
-
-## Run Locally
+## Installation
 
 Clone the project
 
@@ -32,19 +29,19 @@ Go to the project directory
 Install dependencies
 
 ```bash
-  npm install
+  pnpm install
 ```
 
 Start the server
 
 ```bash
-  npm run dev
+  pnpm run dev
 ```
 
 
 ## Environment Variables
 
-To run this project, you will need to add the following environment variables to your .env file
+To run this project, you will need to add the following environment variables to your .env file:
 
 `BASE_URL`
 
@@ -61,10 +58,9 @@ BASE_URL=http://localhost:3000
 
 - Add more platforms
 
-- Add database to save recent posts
+- Store blog posts in database
 
 - Add searching/filtering ability
-
 
 
 ## License
