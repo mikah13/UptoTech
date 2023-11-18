@@ -2,6 +2,7 @@ import { DATE_CONVERSION_FUNCTION, Post } from '@/lib/type';
 import * as cheerio from 'cheerio';
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
+  const MAX_POSTS = 12; // maximum number of results
   const DEFAULT_SITE_URL = 'https://engineering.fb.com/';
 
   const siteURL = searchParams.get('url') || DEFAULT_SITE_URL;
@@ -19,7 +20,7 @@ export async function GET(request: Request) {
   const $ = cheerio.load(html);
 
   let posts: Post[] = [];
-  let allPosts = $(postSelector);
+  let allPosts = $(postSelector).slice(0, MAX_POSTS);
   allPosts.each(function (index, e) {
     const title =
       $(e).find(titleSelector)?.first()?.text().trim() || 'Untitled';
@@ -33,6 +34,7 @@ export async function GET(request: Request) {
           dateFunction as keyof typeof DATE_CONVERSION_FUNCTION
         ](date);
     }
+
     let tags: string[] = [];
     const allTags = $(e).find(tagsSelector);
     allTags.each(function (i, t) {

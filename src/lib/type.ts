@@ -88,6 +88,19 @@ const LYFT_BLOG = {
   dateConversion: '',
 };
 
+const OPENAI_BLOG = {
+  platform: 'OpenAI',
+  url: 'https://openai.com/blog',
+  postSelector:
+    '#blog-index > div.mt-spacing-7 > div > form > div:nth-child(2) > div > div > ul > li',
+  title: 'h3',
+  link: 'a',
+  date: '.f-body-1 span',
+  thumbnail: 'img',
+  tags: '',
+  dateConversion: 'convertMMMDDYYYY',
+};
+
 interface BLOGS {
   [key: string]: PageField;
 }
@@ -97,6 +110,7 @@ export const BLOGS_TO_FETCH: BLOGS = {
   Meta: META_BLOG,
   IBM: IBM_BLOG,
   Lyft: LYFT_BLOG,
+  OpenAI: OPENAI_BLOG,
 };
 
 export const DATE_CONVERSION_FUNCTION = {
