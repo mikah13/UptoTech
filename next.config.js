@@ -25,6 +25,9 @@ const nextConfig = {
             },
             {
                 hostname: 'images.openai.com'
+            },
+            {
+                hostname: 'github.blog'
             }
         ],
     },
