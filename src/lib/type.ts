@@ -101,6 +101,18 @@ const OPENAI_BLOG = {
   dateConversion: 'convertMMMDDYYYY',
 };
 
+const GITHUB_BLOG = {
+  platform: 'GitHub',
+  url: 'https://github.blog/category/engineering/',
+  postSelector: 'article',
+  title: 'h3',
+  link: 'a',
+  date: 'time',
+  thumbnail: 'img',
+  tags: '.authors-wrap a',
+  dateConversion: 'convertMMMDDYYYY',
+};
+
 interface BLOGS {
   [key: string]: PageField;
 }
@@ -111,6 +123,7 @@ export const BLOGS_TO_FETCH: BLOGS = {
   IBM: IBM_BLOG,
   Lyft: LYFT_BLOG,
   OpenAI: OPENAI_BLOG,
+  GitHub: GITHUB_BLOG,
 };
 
 export const DATE_CONVERSION_FUNCTION = {
