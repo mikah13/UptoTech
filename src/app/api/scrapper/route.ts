@@ -8,7 +8,7 @@ export async function GET(request: Request) {
   const siteURL = searchParams.get('url') || DEFAULT_SITE_URL;
   const titleSelector = searchParams.get('title') || '.entry-title a';
   const linkSelector = searchParams.get('link') || '.entry-title a';
-  const thumbnailSelector = searchParams.get('thumbnail') || 'img';
+  const thumbnailSelector = searchParams.get('thumbnail') || '';
   const dateSelector = searchParams.get('date') || '.entry-date.published';
   const tagsSelector = searchParams.get('tags') || '.category';
   const postSelector = searchParams.get('postSelector') || 'article.post';
@@ -26,7 +26,12 @@ export async function GET(request: Request) {
       $(e).find(titleSelector)?.first()?.text().trim() || 'Untitled';
     const link = $(e).find(linkSelector)?.first()?.attr('href')?.trim() || '#';
     const thumbnail =
-      $(e).find(thumbnailSelector)?.first()?.attr('src')?.trim() || '';
+      $(e)
+        .find(thumbnailSelector)
+        ?.first()
+        ?.attr('src')
+        ?.trim()
+        .split('?')[0] || '';
     let date = $(e).find(dateSelector)?.first()?.text()?.trim();
     if (date) {
       date =

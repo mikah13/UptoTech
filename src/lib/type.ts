@@ -96,7 +96,7 @@ const OPENAI_BLOG = {
   title: 'h3',
   link: 'a',
   date: '.f-body-1 span',
-  thumbnail: 'img',
+  thumbnail: '',
   tags: '',
   dateConversion: 'convertMMMDDYYYY',
 };
