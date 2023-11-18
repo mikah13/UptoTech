@@ -2,12 +2,13 @@ import { DATE_CONVERSION_FUNCTION, Post } from '@/lib/type';
 import * as cheerio from 'cheerio';
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
+  const MAX_POSTS = 12; // maximum number of results
   const DEFAULT_SITE_URL = 'https://engineering.fb.com/';
 
   const siteURL = searchParams.get('url') || DEFAULT_SITE_URL;
   const titleSelector = searchParams.get('title') || '.entry-title a';
   const linkSelector = searchParams.get('link') || '.entry-title a';
-  const thumbnailSelector = searchParams.get('thumbnail') || 'img';
+  const thumbnailSelector = searchParams.get('thumbnail') || '';
   const dateSelector = searchParams.get('date') || '.entry-date.published';
   const tagsSelector = searchParams.get('tags') || '.category';
   const postSelector = searchParams.get('postSelector') || 'article.post';
@@ -19,13 +20,18 @@ export async function GET(request: Request) {
   const $ = cheerio.load(html);
 
   let posts: Post[] = [];
-  let allPosts = $(postSelector);
+  let allPosts = $(postSelector).slice(0, MAX_POSTS);
   allPosts.each(function (index, e) {
     const title =
       $(e).find(titleSelector)?.first()?.text().trim() || 'Untitled';
     const link = $(e).find(linkSelector)?.first()?.attr('href')?.trim() || '#';
     const thumbnail =
-      $(e).find(thumbnailSelector)?.first()?.attr('src')?.trim() || '';
+      $(e)
+        .find(thumbnailSelector)
+        ?.first()
+        ?.attr('src')
+        ?.trim()
+        .split('?')[0] || '';
     let date = $(e).find(dateSelector)?.first()?.text()?.trim();
     if (date) {
       date =
@@ -33,6 +39,7 @@ export async function GET(request: Request) {
           dateFunction as keyof typeof DATE_CONVERSION_FUNCTION
         ](date);
     }
+
     let tags: string[] = [];
     const allTags = $(e).find(tagsSelector);
     allTags.each(function (i, t) {
