@@ -7,8 +7,11 @@ Introducing a full-stack Next.js application designed to aggregate and display b
 ## Tech Stack
 
 **Framework:** React, Next.js
-**Style:** TalwindCSS, Shadcn
+
+**Styling:** TalwindCSS, Shadcn
+
 **Libraries:** cheerio 
+
 **Hosting:** Vercel
 
 
@@ -56,11 +59,15 @@ BASE_URL=http://localhost:3000
 
 ## Roadmap
 
-- Add more platforms
+* [ ] Add more platforms
 
-- Store blog posts in database
+* [ ] Store blog posts in database
 
-- Add searching/filtering ability
+* [ ] Add searching/filtering ability
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 
 ## License
