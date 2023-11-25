@@ -26,7 +26,7 @@ export type TOption = {
 export function Combobox({
   options,
   switchTab,
-  defaultOption = 'google',
+  defaultOption = 'Google',
 }: {
   options: TOption[];
   defaultOption?: string;
@@ -34,7 +34,6 @@ export function Combobox({
 }) {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState(defaultOption);
-
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
@@ -44,11 +43,7 @@ export function Combobox({
           aria-expanded={open}
           className='w-full justify-between'
         >
-          {value
-            ? options.find(
-                (option) => option.value.toLowerCase() === value.toLowerCase()
-              )?.label
-            : 'Select company...'}
+          {defaultOption}
           <ChevronsUpDown className='ml-2 h-4 w-4 shrink-0 opacity-50' />
         </Button>
       </PopoverTrigger>
@@ -62,7 +57,6 @@ export function Combobox({
                 key={option.value}
                 value={option.value}
                 onSelect={(currentValue) => {
-                  setValue(currentValue === value ? '' : currentValue);
                   setOpen(false);
                   switchTab(option.value);
                 }}

@@ -8,7 +8,6 @@ import ContentCard from './content-card';
 import SkeletonCard from './skeleton-card';
 import { ErrorBanner } from './error-banner';
 import { Combobox } from './combobox';
-import MobilePostCard from './mobile-post-card';
 import { Button } from './ui/button';
 
 type Props = {};
@@ -52,7 +51,7 @@ const PostCards = (props: Props) => {
       </h2>
 
       <Tabs
-        defaultValue={platform}
+        value={platform}
         className='w-full mt-6 text-center '
         onValueChange={(e) => setPlatform(e)}
       >
@@ -69,6 +68,7 @@ const PostCards = (props: Props) => {
             return { label: p, value: p };
           })}
           switchTab={(p) => {
+            console.log({ p, platform });
             setPlatform(p);
           }}
         />
