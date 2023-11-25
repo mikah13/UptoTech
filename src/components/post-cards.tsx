@@ -55,24 +55,25 @@ const PostCards = (props: Props) => {
         className='w-full mt-6 text-center '
         onValueChange={(e) => setPlatform(e)}
       >
-        <TabsList className='mb-8 px-2 py-6  '>
+        <TabsList className='mb-8 px-2 py-6  hidden md:flex'>
           {Object.keys(BLOGS_TO_FETCH).map((platform) => (
             <TabsTrigger key={platform} value={platform}>
               <p> {platform}</p>
             </TabsTrigger>
           ))}
         </TabsList>
-        <Combobox
-          defaultOption={platform}
-          options={Object.keys(BLOGS_TO_FETCH).map((p) => {
-            return { label: p, value: p };
-          })}
-          switchTab={(p) => {
-            console.log({ p, platform });
-            setPlatform(p);
-          }}
-        />
-
+        <div className='mb-6 block md:hidden'>
+          <Combobox
+            defaultOption={platform}
+            options={Object.keys(BLOGS_TO_FETCH).map((p) => {
+              return { label: p, value: p };
+            })}
+            switchTab={(p) => {
+              console.log({ p, platform });
+              setPlatform(p);
+            }}
+          />
+        </div>
         {Object.keys(BLOGS_TO_FETCH).map((platform, index) => (
           <PostContent key={index} platform={platform} />
         ))}
