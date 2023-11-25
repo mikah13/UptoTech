@@ -112,16 +112,16 @@ const GITHUB_BLOG = {
   tags: '.authors-wrap a',
   dateConversion: 'convertMMMDDYYYY',
 };
-const WHATSAPP_BLOG = {
-  platform: 'WhatsApp',
-  url: 'https://blog.whatsapp.com/',
-  postSelector: '[data-testid="waui_section"]',
-  title: 'h2',
-  link: 'a',
-  date: '._aof4',
+const AMAZON_BLOG = {
+  platform: 'Amazon',
+  url: 'https://aws.amazon.com/blogs/architecture/',
+  postSelector: 'article',
+  title: '.blog-post-title span',
+  link: '.blog-post-title a',
+  date: 'time',
   thumbnail: 'img',
-  tags: '',
-  dateConversion: '',
+  tags: '.blog-post-categories a',
+  dateConversion: 'convertMMMDDYYYY',
 };
 
 interface BLOGS {
@@ -135,7 +135,7 @@ export const BLOGS_TO_FETCH: BLOGS = {
   Lyft: LYFT_BLOG,
   OpenAI: OPENAI_BLOG,
   GitHub: GITHUB_BLOG,
-  WhatsApp: WHATSAPP_BLOG,
+  WhatsApp: AMAZON_BLOG,
 };
 
 export const DATE_CONVERSION_FUNCTION = {
