@@ -44,8 +44,8 @@ const PostCards = (props: Props) => {
       <h2 className='scroll-m-20 mx-auto text-center border-b pb-6 text-4xl font-semibold tracking-tight first:mt-0'>
         Featured posts
       </h2>
-      <Tabs defaultValue='Google' className='w-full mt-6 text-center'>
-        <TabsList className='mb-8 px-2 py-6'>
+      <Tabs defaultValue='Google' className='w-full mt-6 text-center '>
+        <TabsList className='mb-8 px-2 py-6  '>
           {Object.keys(BLOGS_TO_FETCH).map((platform) => (
             <TabsTrigger key={platform} value={platform}>
               <p> {platform}</p>
