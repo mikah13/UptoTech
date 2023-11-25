@@ -23,10 +23,17 @@ export type TOption = {
   value: string;
 };
 
-export function Combobox({ options }: { options: TOption[] }) {
+export function Combobox({
+  options,
+  switchTab,
+  defaultOption = 'google',
+}: {
+  options: TOption[];
+  defaultOption?: string;
+  switchTab: (c: string) => void;
+}) {
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState('');
-  console.log({ options, value });
+  const [value, setValue] = React.useState(defaultOption);
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -35,20 +42,20 @@ export function Combobox({ options }: { options: TOption[] }) {
           variant='outline'
           role='combobox'
           aria-expanded={open}
-          className='w-[200px] justify-between'
+          className='w-full justify-between'
         >
           {value
             ? options.find(
                 (option) => option.value.toLowerCase() === value.toLowerCase()
               )?.label
-            : 'Select framework...'}
+            : 'Select company...'}
           <ChevronsUpDown className='ml-2 h-4 w-4 shrink-0 opacity-50' />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className='w-[200px] p-0'>
+      <PopoverContent className='w-full p-0'>
         <Command>
-          <CommandInput placeholder='Search framework...' />
-          <CommandEmpty>No framework found.</CommandEmpty>
+          <CommandInput placeholder='Search company...' />
+          <CommandEmpty>No company found.</CommandEmpty>
           <CommandGroup>
             {options.map((option) => (
               <CommandItem
@@ -57,6 +64,7 @@ export function Combobox({ options }: { options: TOption[] }) {
                 onSelect={(currentValue) => {
                   setValue(currentValue === value ? '' : currentValue);
                   setOpen(false);
+                  switchTab(option.value);
                 }}
               >
                 <Check

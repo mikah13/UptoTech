@@ -45,24 +45,33 @@ const PostCards = (props: Props) => {
       <h2 className='scroll-m-20 mx-auto text-center border-b pb-6 text-4xl font-semibold tracking-tight first:mt-0'>
         Featured posts
       </h2>
-      <Combobox
-        options={Object.keys(BLOGS_TO_FETCH).map((p) => {
-          return { label: p, value: p };
-        })}
-      />
-      <Tabs defaultValue='Google' className='w-full mt-6 text-center '>
-        <TabsList className='mb-8 px-2 py-6  '>
-          {Object.keys(BLOGS_TO_FETCH).map((platform) => (
-            <TabsTrigger key={platform} value={platform}>
-              <p> {platform}</p>
-            </TabsTrigger>
-          ))}
-        </TabsList>
 
-        {Object.keys(BLOGS_TO_FETCH).map((platform, index) => (
-          <PostContent key={index} platform={platform} />
-        ))}
-      </Tabs>
+      <div className='hidden md:block'>
+        <Tabs defaultValue='Google' className='w-full mt-6 text-center '>
+          <TabsList className='mb-8 px-2 py-6  '>
+            {Object.keys(BLOGS_TO_FETCH).map((platform) => (
+              <TabsTrigger key={platform} value={platform}>
+                <p> {platform}</p>
+              </TabsTrigger>
+            ))}
+          </TabsList>
+
+          {Object.keys(BLOGS_TO_FETCH).map((platform, index) => (
+            <PostContent key={index} platform={platform} />
+          ))}
+        </Tabs>
+      </div>
+
+      <div className='block md:hidden'>
+        <Combobox
+          defaultOption='google'
+          options={Object.keys(BLOGS_TO_FETCH).map((p) => {
+            return { label: p, value: p };
+          })}
+          switchTab={(p) => {}}
+        />
+        <PostContent key={index} platform={platform} />
+      </div>
     </div>
   );
 };
