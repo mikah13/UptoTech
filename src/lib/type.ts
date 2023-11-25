@@ -112,6 +112,17 @@ const GITHUB_BLOG = {
   tags: '.authors-wrap a',
   dateConversion: 'convertMMMDDYYYY',
 };
+const WHATSAPP_BLOG = {
+  platform: 'WhatsApp',
+  url: 'https://blog.whatsapp.com/',
+  postSelector: '._wauiSection__mediumWidth:not(first-child)',
+  title: 'h2',
+  link: 'a',
+  date: '._aof4',
+  thumbnail: 'img',
+  tags: '',
+  dateConversion: '',
+};
 
 interface BLOGS {
   [key: string]: PageField;
@@ -124,6 +135,7 @@ export const BLOGS_TO_FETCH: BLOGS = {
   Lyft: LYFT_BLOG,
   OpenAI: OPENAI_BLOG,
   GitHub: GITHUB_BLOG,
+  WhatsApp: WHATSAPP_BLOG,
 };
 
 export const DATE_CONVERSION_FUNCTION = {
