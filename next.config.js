@@ -28,6 +28,9 @@ const nextConfig = {
             },
             {
                 hostname: 'github.blog'
+            },
+            {
+                hostname: 'd2908q01vomqb2.cloudfront.net'
             }
         ],
     },

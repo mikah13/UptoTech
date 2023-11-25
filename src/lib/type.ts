@@ -135,7 +135,7 @@ export const BLOGS_TO_FETCH: BLOGS = {
   Lyft: LYFT_BLOG,
   OpenAI: OPENAI_BLOG,
   GitHub: GITHUB_BLOG,
-  WhatsApp: AMAZON_BLOG,
+  Amazon: AMAZON_BLOG,
 };
 
 export const DATE_CONVERSION_FUNCTION = {
