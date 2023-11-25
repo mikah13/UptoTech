@@ -18,30 +18,12 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover';
 
-const options = [
-  {
-    value: 'next.js',
-    label: 'Next.js',
-  },
-  {
-    value: 'sveltekit',
-    label: 'SvelteKit',
-  },
-  {
-    value: 'nuxt.js',
-    label: 'Nuxt.js',
-  },
-  {
-    value: 'remix',
-    label: 'Remix',
-  },
-  {
-    value: 'astro',
-    label: 'Astro',
-  },
-];
+export type TOption = {
+  label: string;
+  value: string;
+};
 
-export function ComboboxDemo() {
+export function Combobox({ options }: { options: TOption[] }) {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState('');
 
