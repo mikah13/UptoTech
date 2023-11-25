@@ -26,6 +26,7 @@ export type TOption = {
 export function Combobox({ options }: { options: TOption[] }) {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState('');
+  console.log({ options, value });
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -37,7 +38,9 @@ export function Combobox({ options }: { options: TOption[] }) {
           className='w-[200px] justify-between'
         >
           {value
-            ? options.find((option) => option.value === value)?.label
+            ? options.find(
+                (option) => option.value.toLowerCase() === value.toLowerCase()
+              )?.label
             : 'Select framework...'}
           <ChevronsUpDown className='ml-2 h-4 w-4 shrink-0 opacity-50' />
         </Button>
@@ -59,7 +62,9 @@ export function Combobox({ options }: { options: TOption[] }) {
                 <Check
                   className={cn(
                     'mr-2 h-4 w-4',
-                    value === option.value ? 'opacity-100' : 'opacity-0'
+                    value.toLowerCase() === option.value.toLowerCase()
+                      ? 'opacity-100'
+                      : 'opacity-0'
                   )}
                 />
                 {option.label}
