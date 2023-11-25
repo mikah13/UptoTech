@@ -16,10 +16,9 @@ type Props = {};
 export const PostContent = ({ platform }: { platform: string }) => {
   const { data, loading, error } = useDataFetcher(platform);
   return (
-    <TabsContent
+    <div
       className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-4 gap-y-8 text-left mt-0'
       key={platform}
-      value={platform}
     >
       {error && (
         <div className='col-span-3 mx-auto text-center my-6'>
@@ -38,7 +37,7 @@ export const PostContent = ({ platform }: { platform: string }) => {
         data.posts.map((post, index) => (
           <ContentCard key={index} data={post} platform={platform} />
         ))}
-    </TabsContent>
+    </div>
   );
 };
 
@@ -61,17 +60,30 @@ const PostCards = (props: Props) => {
             ))}
           </TabsList>
 
-          {Object.keys(BLOGS_TO_FETCH).map((platform, index) => (
-            <PostContent key={index} platform={platform} />
-          ))}
+     
 
         </Tabs>
       </div> */}
-      {Object.keys(BLOGS_TO_FETCH).map((platform) => (
-        <Button key={platform} value={platform}>
-          <p> {platform}</p>
-        </Button>
-      ))}
+      <div className='mx-auto text-center'>
+        {Object.keys(BLOGS_TO_FETCH).map((p) => (
+          <Button
+            className='rounded-none'
+            key={p}
+            value={p}
+            variant={
+              p.toLowerCase() === platform.toLowerCase()
+                ? 'default'
+                : 'secondary'
+            }
+            onClick={() => setPlatform(p.toLowerCase())}
+          >
+            <p> {p}</p>
+          </Button>
+        ))}
+            {Object.keys(BLOGS_TO_FETCH).map((platform, index) => (
+            <PostContent key={index} platform={platform} />
+          ))}
+      </div>
 
       <div className='block md:hidden'>
         <MobilePostCard />
