@@ -27,7 +27,7 @@ function Hero({}: Props) {
             </Link>
           </div>
           <h1 className='scroll-m-20  text-4xl font-extrabold tracking-tight lg:text-5xl'>
-            Exploring Tech with Industry Leaders
+            Technical blogs from the industry leaders
           </h1>
           <div className='mt-8'>
             <h2 className='leading-7 [&:not(:first-child)]:mt-6 max-w-[40rem]'>

@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://uptotech.vercel.app/'),
-  title: 'UptoTech - Exploring Tech with Industry Leaders',
+  title: 'UptoTech - Technical blogs from the industry leaders',
   icons: {
     icon: '/favicon.ico',
   },
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   authors: [{ name: 'Mike Hoang' }],
   creator: 'Mike Hoang',
   openGraph: {
-    title: 'UptoTech - Exploring Tech with Industry Leaders',
+    title: 'UptoTech - Technical blogs from the industry leaders',
     description:
       'Compile from various technical blogs into one central hub, saving you time and ensuring you updated with the industry leading companies in the world !',
     url: 'https://uptotech.vercel.app/',
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     ],
   },
   twitter: {
-    title: 'UptoTech - Exploring Tech with Industry Leaders',
+    title: 'UptoTech - Technical blogs from the industry leaders',
     description:
       'Compile from various technical blogs into one central hub, saving you time and ensuring you updated with the industry leading companies in the world !',
     images: [
