@@ -16,9 +16,10 @@ type Props = {};
 export const PostContent = ({ platform }: { platform: string }) => {
   const { data, loading, error } = useDataFetcher(platform);
   return (
-    <div
+    <TabsContent
       className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-4 gap-y-8 text-left mt-0'
       key={platform}
+      value={platform}
     >
       {error && (
         <div className='col-span-3 mx-auto text-center my-6'>
@@ -37,12 +38,12 @@ export const PostContent = ({ platform }: { platform: string }) => {
         data.posts.map((post, index) => (
           <ContentCard key={index} data={post} platform={platform} />
         ))}
-    </div>
+    </TabsContent>
   );
 };
 
 const PostCards = (props: Props) => {
-  const [platform, setPlatform] = useState<string>('google');
+  const [platform, setPlatform] = useState<string>('Google');
 
   return (
     <div className='w-full mx-auto'>
@@ -50,44 +51,32 @@ const PostCards = (props: Props) => {
         Featured posts
       </h2>
 
-      {/* <div className='hidden md:block'>
-        <Tabs defaultValue='Google' className='w-full mt-6 text-center '>
-          <TabsList className='mb-8 px-2 py-6  '>
-            {Object.keys(BLOGS_TO_FETCH).map((platform) => (
-              <TabsTrigger key={platform} value={platform}>
-                <p> {platform}</p>
-              </TabsTrigger>
-            ))}
-          </TabsList>
-
-     
-
-        </Tabs>
-      </div> */}
-      <div className='mx-auto text-center'>
-        {Object.keys(BLOGS_TO_FETCH).map((p) => (
-          <Button
-            className='rounded-none'
-            key={p}
-            value={p}
-            variant={
-              p.toLowerCase() === platform.toLowerCase()
-                ? 'default'
-                : 'secondary'
-            }
-            onClick={() => setPlatform(p.toLowerCase())}
-          >
-            <p> {p}</p>
-          </Button>
-        ))}
-            {Object.keys(BLOGS_TO_FETCH).map((platform, index) => (
-            <PostContent key={index} platform={platform} />
+      <Tabs
+        defaultValue={platform}
+        className='w-full mt-6 text-center '
+        onValueChange={(e) => setPlatform(e)}
+      >
+        <TabsList className='mb-8 px-2 py-6  '>
+          {Object.keys(BLOGS_TO_FETCH).map((platform) => (
+            <TabsTrigger key={platform} value={platform}>
+              <p> {platform}</p>
+            </TabsTrigger>
           ))}
-      </div>
+        </TabsList>
+        <Combobox
+          defaultOption={platform}
+          options={Object.keys(BLOGS_TO_FETCH).map((p) => {
+            return { label: p, value: p };
+          })}
+          switchTab={(p) => {
+            setPlatform(p);
+          }}
+        />
 
-      <div className='block md:hidden'>
-        <MobilePostCard />
-      </div>
+        {Object.keys(BLOGS_TO_FETCH).map((platform, index) => (
+          <PostContent key={index} platform={platform} />
+        ))}
+      </Tabs>
     </div>
   );
 };
