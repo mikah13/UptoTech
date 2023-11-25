@@ -17,10 +17,12 @@ export async function GET(request: Request) {
   const platform = searchParams.get('platform') || 'meta';
   const res = await fetch(siteURL, {});
   const html = await res.text();
+
   const $ = cheerio.load(html);
 
   let posts: Post[] = [];
   let allPosts = $(postSelector).slice(0, MAX_POSTS);
+  console.log(allPosts);
   allPosts.each(function (index, e) {
     const title =
       $(e).find(titleSelector)?.first()?.text().trim() || 'Untitled';

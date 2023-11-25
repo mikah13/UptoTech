@@ -115,7 +115,7 @@ const GITHUB_BLOG = {
 const WHATSAPP_BLOG = {
   platform: 'WhatsApp',
   url: 'https://blog.whatsapp.com/',
-  postSelector: '._wauiSection__mediumWidth:not(first-child)',
+  postSelector: '[data-testid="waui_section"]',
   title: 'h2',
   link: 'a',
   date: '._aof4',
