@@ -1,4 +1,5 @@
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
 import useDataFetcher, { usePosts } from './hooks';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { BLOGS_TO_FETCH, PostResponse } from '@/lib/type';
@@ -7,10 +8,12 @@ import ContentCard from './content-card';
 import SkeletonCard from './skeleton-card';
 import { ErrorBanner } from './error-banner';
 import { Combobox } from './combobox';
+import MobilePostCard from './mobile-post-card';
+import { Button } from './ui/button';
 
 type Props = {};
 
-const PostContent = ({ platform }: { platform: string }) => {
+export const PostContent = ({ platform }: { platform: string }) => {
   const { data, loading, error } = useDataFetcher(platform);
   return (
     <TabsContent
@@ -40,13 +43,15 @@ const PostContent = ({ platform }: { platform: string }) => {
 };
 
 const PostCards = (props: Props) => {
+  const [platform, setPlatform] = useState<string>('google');
+
   return (
     <div className='w-full mx-auto'>
       <h2 className='scroll-m-20 mx-auto text-center border-b pb-6 text-4xl font-semibold tracking-tight first:mt-0'>
         Featured posts
       </h2>
 
-      <div className='hidden md:block'>
+      {/* <div className='hidden md:block'>
         <Tabs defaultValue='Google' className='w-full mt-6 text-center '>
           <TabsList className='mb-8 px-2 py-6  '>
             {Object.keys(BLOGS_TO_FETCH).map((platform) => (
@@ -59,18 +64,17 @@ const PostCards = (props: Props) => {
           {Object.keys(BLOGS_TO_FETCH).map((platform, index) => (
             <PostContent key={index} platform={platform} />
           ))}
+
         </Tabs>
-      </div>
+      </div> */}
+      {Object.keys(BLOGS_TO_FETCH).map((platform) => (
+        <Button key={platform} value={platform}>
+          <p> {platform}</p>
+        </Button>
+      ))}
 
       <div className='block md:hidden'>
-        <Combobox
-          defaultOption='google'
-          options={Object.keys(BLOGS_TO_FETCH).map((p) => {
-            return { label: p, value: p };
-          })}
-          switchTab={(p) => {}}
-        />
-        <PostContent key={index} platform={platform} />
+        <MobilePostCard />
       </div>
     </div>
   );
