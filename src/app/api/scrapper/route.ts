@@ -2,7 +2,7 @@ import { DATE_CONVERSION_FUNCTION, Post } from '@/lib/type';
 import * as cheerio from 'cheerio';
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
-  const MAX_POSTS = 12; // maximum number of results
+  const MAX_POSTS = 9; // maximum number of results
   const DEFAULT_SITE_URL = 'https://engineering.fb.com/';
 
   const siteURL = searchParams.get('url') || DEFAULT_SITE_URL;
