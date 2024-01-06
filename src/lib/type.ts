@@ -133,7 +133,6 @@ export const BLOGS_TO_FETCH: BLOGS = {
   Meta: META_BLOG,
   IBM: IBM_BLOG,
   Lyft: LYFT_BLOG,
-  OpenAI: OPENAI_BLOG,
   GitHub: GITHUB_BLOG,
   Amazon: AMAZON_BLOG,
 };

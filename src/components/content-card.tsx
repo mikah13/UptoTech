@@ -1,18 +1,10 @@
 import { Post } from '@/lib/type';
 import React from 'react';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import Image from 'next/image';
 
 import { AspectRatio } from './ui/aspect-ratio';
 import { Badge } from './ui/badge';
-import { platform } from 'os';
 import { Button } from './ui/button';
 import Link from 'next/link';
 type Props = {};
@@ -51,11 +43,13 @@ const ContentCard = ({ data, platform }: { data: Post; platform: string }) => {
       {tags && tags.length > 0 && (
         <CardContent className='flex flex-col p-4 pt-6'>
           <div className='absolute bottom-4 flex flex-row space-x-3'>
-            {tags?.map((tag, i) => (
-              <Button className='px-2 py-0' key={i} variant='outline'>
-                {tag}
-              </Button>
-            ))}
+            {tags
+              ?.filter((e, i) => i < 2)
+              .map((tag, i) => (
+                <Button className='px-2 py-0' key={i} variant='outline'>
+                  {tag}
+                </Button>
+              ))}
           </div>
         </CardContent>
       )}
