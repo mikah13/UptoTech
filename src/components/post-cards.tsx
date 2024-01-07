@@ -2,12 +2,11 @@
 import React, { useState } from 'react';
 import useDataFetcher, { usePosts } from './hooks';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-
 import ContentCard from './content-card';
 import SkeletonCard from './skeleton-card';
 import { ErrorBanner } from './error-banner';
 import { Combobox } from './combobox';
-import { Button } from './ui/button';
+import { BLOGS_TO_FETCH } from '@/blogs.config';
 
 type Props = {};
 
