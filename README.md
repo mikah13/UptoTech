@@ -79,7 +79,7 @@ const BLOG_PLATFORM = {
 
 - Then you need to add this object to `BLOGS_TO_FETCH`
 
-```
+``` ts
 export const BLOGS_TO_FETCH: Record<string, PageField> = {
   Google: GOOGLE_BLOG,
   Meta: META_BLOG,
