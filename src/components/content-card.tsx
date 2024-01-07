@@ -7,7 +7,6 @@ import { AspectRatio } from './ui/aspect-ratio';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
 import Link from 'next/link';
-type Props = {};
 
 const ContentCard = ({ data, platform }: { data: Post; platform: string }) => {
   const { title, thumbnail, date, tags, link } = data;
