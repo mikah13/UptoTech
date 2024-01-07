@@ -1,5 +1,4 @@
-import { PageField } from "./lib/type";
-
+import { PageField } from './lib/type';
 
 const GOOGLE_BLOG = {
   platform: 'Google',
@@ -84,6 +83,18 @@ const AMAZON_BLOG = {
   dateConversion: 'convertMMMDDYYYY',
 };
 
+const DROPBOX_BLOG = {
+  platform: 'Dropbox',
+  url: 'https://dropbox.tech/all-stories',
+  postSelector: '.dr-article-section__list-item',
+  title: 'h3 span',
+  link: 'a',
+  date: '[data-element-id="article-date"]',
+  thumbnail: 'img',
+  tags: '[data-element-id="article-category-link"]',
+  dateConversion: 'convertMMMDDYYYY',
+};
+
 export const BLOGS_TO_FETCH: Record<string, PageField> = {
   Google: GOOGLE_BLOG,
   Meta: META_BLOG,
@@ -91,5 +102,5 @@ export const BLOGS_TO_FETCH: Record<string, PageField> = {
   Lyft: LYFT_BLOG,
   GitHub: GITHUB_BLOG,
   Amazon: AMAZON_BLOG,
+  Dropbox: DROPBOX_BLOG,
 };
-
