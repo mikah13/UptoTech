@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import useDataFetcher, { usePosts } from './hooks';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { BLOGS_TO_FETCH, PostResponse } from '@/lib/type';
 
 import ContentCard from './content-card';
 import SkeletonCard from './skeleton-card';
