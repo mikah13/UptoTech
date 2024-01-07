@@ -41,9 +41,6 @@ export interface Context {
   isLoading: boolean;
 }
 
-
-
-
 export const DATE_CONVERSION_FUNCTION = {
   convertMDDYY: convertMDDYY,
   convertMMMDDYYYY: convertMMMDDYYYY,

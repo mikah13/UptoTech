@@ -8,8 +8,6 @@ import { ErrorBanner } from './error-banner';
 import { Combobox } from './combobox';
 import { BLOGS_TO_FETCH } from '@/blogs.config';
 
-type Props = {};
-
 export const PostContent = ({ platform }: { platform: string }) => {
   const { data, loading, error } = useDataFetcher(platform);
   return (
@@ -39,9 +37,8 @@ export const PostContent = ({ platform }: { platform: string }) => {
   );
 };
 
-const PostCards = (props: Props) => {
+const PostCards = () => {
   const [platform, setPlatform] = useState<string>('Google');
-
   return (
     <div className='w-full mx-auto'>
       <h2 className='scroll-m-20 mx-auto text-center border-b pb-6 text-4xl font-semibold tracking-tight first:mt-0'>

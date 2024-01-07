@@ -1,14 +1,9 @@
 import { fetchUrl, getURLFromPageField } from '@/lib/utils';
-import { Post, PostResponse, BLOGS_TO_FETCH } from '@/lib/type';
-import {
-  ReactNode,
-  createContext,
-  useState,
-  useContext,
-  useEffect,
-} from 'react';
+import { Post, PostResponse } from '@/lib/type';
+import { ReactNode, useState, useEffect } from 'react';
 
-import { PostContext } from './context';
+import { PostContext } from '../context';
+import { BLOGS_TO_FETCH } from '@/blogs.config';
 
 type PostProviderProps = {
   children: ReactNode;
@@ -22,13 +17,6 @@ export const PostContextProvider: React.FC<PostProviderProps> = ({
   useEffect(() => {
     let data: PostResponse[] = [];
     try {
-      // const promises = Object.keys(BLOGS_TO_FETCH).map((platform: string) =>
-      //   fetchUrl(getURLFromPageField(BLOGS_TO_FETCH[platform]))
-      // );
-      // Promise.all(promises).then((data: PostResponse[]) => {
-      //   setPosts(data);
-      //   setLoading(false);
-      // });
       Object.keys(BLOGS_TO_FETCH).map(async (platform: string) => {
         let fetchData = await fetchUrl(
           getURLFromPageField(BLOGS_TO_FETCH[platform])

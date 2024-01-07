@@ -1,7 +1,8 @@
 import { useState, useEffect, useContext } from 'react';
 import { PostContext } from './context';
 import { fetchUrl, getURLFromPageField } from '@/lib/utils';
-import { Post, PostResponse, BLOGS_TO_FETCH } from '@/lib/type';
+import { Post, PostResponse } from '@/lib/type';
+import { BLOGS_TO_FETCH } from '@/blogs.config';
 
 export const usePosts = () => {
   const context = useContext(PostContext);
