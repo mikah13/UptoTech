@@ -8,7 +8,7 @@ import { Separator } from './ui/separator';
 import Link from 'next/link';
 type Props = {};
 
-async function Hero({}: Props) {
+function Hero({}: Props) {
   return (
     <div className='h-screen '>
       <div className='flex flex-col lg:flex-row space-y-6 lg:space-y-0 justify-evenly w-full pt-28'>
