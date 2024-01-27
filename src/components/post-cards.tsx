@@ -7,7 +7,6 @@ import SkeletonCard from './skeleton-card';
 import { ErrorBanner } from './error-banner';
 import { Combobox } from './combobox';
 import { BLOGS_TO_FETCH } from '@/blogs.config';
-import { DB } from '@/db';
 
 export const PostContent = ({ platform }: { platform: string }) => {
   const { data, loading, error } = useDataFetcher(platform);
