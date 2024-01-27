@@ -64,7 +64,7 @@ const GITHUB_BLOG = {
   platform: 'GitHub',
   url: 'https://github.blog/category/engineering/',
   postSelector: 'article',
-  title: 'h3',
+  title: '.Link--primary',
   link: 'a',
   date: 'time',
   thumbnail: 'img',
